@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Archivo, sans-serif;
+  background: #252525;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 8px;
+  padding: 30px;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.search-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+input {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 1.5px solid #6f6f6f;
+  border-radius: 8px;
+  width: 300px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #151515;
+}
+
+button {
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-family: Archivo, sans-serif;
+  background: #1b1b1b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #3d3d3d;
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.stock-info {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  display: none;
+}
+
+.stock-info.show {
+  display: block;
+}
+
+.stock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.stock-symbol {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.stock-price {
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: #667eea;
+}
+
+.stock-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.detail-item {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.detail-label {
+  color: #666;
+  font-size: 0.875rem;
+  margin-bottom: 5px;
+}
+
+.detail-value {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.chart-container {
+  margin-top: 30px;
+  position: relative;
+  height: 400px;
+}
+
+.loading {
+  text-align: center;
+  color: #667eea;
+  padding: 20px;
+  display: none;
+}
+
+.error {
+  background: #fee;
+  color: #c33;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: none;
+}
+
+.error.show {
+  display: block;
+}
