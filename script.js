@@ -17,3 +17,18 @@ stockInput.addEventListener("keypress", (e) => {
     searchStock();
   }
 });
+
+// ----- MAIN FUNCTION -----
+
+async function searchStock() {
+  const symbol = stockInput.value.trim().toUpperCase();
+
+  if (!symbol) {
+    showError("Please enter a stock symbol");
+    return;
+  }
+
+  hideError();
+  showLoading(true);
+  hideStockInfo();
+}
