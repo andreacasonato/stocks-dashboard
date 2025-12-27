@@ -31,4 +31,15 @@ async function searchStock() {
   hideError();
   showLoading(true);
   hideStockInfo();
+
+  try {
+    const timeSeries = await fetchStockData(symbol);
+
+    displayStockInfo(symbol, timeSeries);
+    displayChart(timeSeries);
+  } catch (error) {
+    showError(error.message);
+  } finally {
+    showLoading(false);
+  }
 }
