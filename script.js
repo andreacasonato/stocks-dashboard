@@ -44,7 +44,8 @@ async function searchStock() {
   }
 }
 
-// API Fetch Function
+// ----- API Fetch Function -----
+
 async function fetchStockData(symbol) {
   const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${API_KEY}`;
 
@@ -60,4 +61,44 @@ async function fetchStockData(symbol) {
   }
 
   return data["Time Series (Daily)"];
+}
+
+// ----- Display Stock Info -----
+function displayStockInfo(symbol, series) {
+  const dates = Object.keys(series);
+  const latestDate = dates[0];
+  const latest = series[latestDate];
+  const previous = series[dates[1]];
+
+  document.getElementById("symbol").textContent = symbol;
+  document.getElementById("price").textContent =
+    "$" + parseFloat(latest["4. close"]).toFixed(2);
+
+  document.getElementById("prevClose").textContent =
+    "$" + parseFloat(previous["4. close"]).toFixed(2);
+
+  document.getElementById("open").textContent =
+    "$" + parseFloat(latest["1. open"]).toFixed(2);
+
+  document.getElementById("high").textContent =
+    "$" + parseFloat(latest["2. high"]).toFixed(2);
+
+  document.getElementById("low").textContent =
+    "$" + parseFloat(latest["3. low"]).toFixed(2);
+
+  const volume = parseInt(latest["5. volume"]);
+  document.getElementById("volume").textContent = volume.toLocaleString();
+
+  const change =
+    parseFloat(latest["4. close"]) - parseFloat(previous["4. close"]);
+
+  const changePercent = ((change / previous["4. close"]) * 100).toFixed(2);
+
+  const changeEl = document.getElementById("change");
+  changeEl.textContent = `${change >= 0 ? "+" : ""}${change.toFixed(
+    2
+  )} (${changePercent}%)`;
+  changeEl.style.color = change >= 0 ? "#10b981" : "#ef4444";
+
+  document.getElementById("stockInfo").classList.add("show");
 }
