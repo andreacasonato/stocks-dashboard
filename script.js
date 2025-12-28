@@ -43,3 +43,21 @@ async function searchStock() {
     showLoading(false);
   }
 }
+
+// API Fetch Function
+async function fetchStockData(symbol) {
+  const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${API_KEY}`;
+
+  const response = await fetch(url);
+  const data = await response.json();
+
+  if (data.Note) {
+    throw new Error("API limit reached. Please wait 1 minute and try again.");
+  }
+
+  if (!data["Time Series (Daily)"]) {
+    throw new Error("Invalid stock symbol.");
+  }
+
+  return data["Time Series (Daily)"];
+}
