@@ -102,3 +102,46 @@ function displayStockInfo(symbol, series) {
 
   document.getElementById("stockInfo").classList.add("show");
 }
+
+// ----- CHART FUNCTION -----
+
+function displayChart(series) {
+  const dates = Object.keys(series).slice(0, 90).reverse();
+  const prices = dates.map((date) => parseFloat(series[date]["4. close"]));
+
+  const ctx = document.getElementById("stockChart").getContext("2d");
+
+  if (myChart) {
+    myChart.destroy();
+  }
+
+  myChart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: dates,
+      datasets: [
+        {
+          data: prices,
+          borderColor: "#667eea",
+          backgroundColor: "rgba(102, 126, 234, 0.1)",
+          tension: 0.4,
+          fill: true,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+      },
+      scales: {
+        y: {
+          ticks: {
+            callback: (value) => "$" + value.toFixed(2),
+          },
+        },
+      },
+    },
+  });
+}
