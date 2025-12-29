@@ -122,8 +122,8 @@ function displayChart(series) {
       datasets: [
         {
           data: prices,
-          borderColor: "#667eea",
-          backgroundColor: "rgba(102, 126, 234, 0.1)",
+          borderColor: "#727272ff",
+          backgroundColor: "#8a8a8a1a",
           tension: 0.4,
           fill: true,
         },

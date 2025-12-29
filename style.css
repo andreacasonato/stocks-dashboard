@@ -95,7 +95,7 @@ button:disabled {
 .stock-price {
   font-size: 2.25rem;
   font-weight: bold;
-  color: #667eea;
+  color: #49ab07;
 }
 
 .stock-details {
@@ -130,7 +130,7 @@ button:disabled {
 
 .loading {
   text-align: center;
-  color: #667eea;
+  color: #333;
   padding: 20px;
   display: none;
 }
