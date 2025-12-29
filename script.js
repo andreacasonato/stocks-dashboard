@@ -145,3 +145,24 @@ function displayChart(series) {
     },
   });
 }
+
+// ----- DISPLAY ERRORS -----
+
+function showError(message) {
+  const error = document.getElementById("error");
+  error.textContent = message;
+  error.classList.add("show");
+}
+
+function hideError() {
+  document.getElementById("error").classList.remove("show");
+}
+
+function showLoading(show) {
+  document.getElementById("loading").style.display = show ? "block" : "none";
+  searchBtn.disabled = show;
+}
+
+function hideStockInfo() {
+  document.getElementById("stockInfo").classList.remove("show");
+}
